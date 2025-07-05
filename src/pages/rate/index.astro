@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../../layouts/Layout.astro";
+import '../../styles/global.css';
+import SocialMedia from "../../components/SocialMedia.astro";
+
+const content = [
+  {
+    stars: 5,
+    title: "Very satisfied"
+  },
+  {
+    stars: 4,
+    title: "Satisfied"
+  },
+  {
+    stars: 3,
+    title: "Neutral"
+  },
+  {
+    stars: 2,
+    title: "Dissatisfied"
+  },
+  {
+    stars: 1,
+    title: "Very dissatisfied"
+  }
+]
+---
+
+<Layout>
+	<a href="/share">
+    <Icon name={'back'} class={"w-[20px] h-[20px] absolute top-8 left-6"}/>
+  </a>
+	<section class="w-full flex flex-col justify-center items-center gap-4">
+		<div class="w-full flex flex-col justify-center items-center gap-[3px]">
+			<img src="/Logo.png" alt="Logo de Kairo Signs" width={72} height={72} loading="lazy"/>
+			<div class="flex flex-col justify-center items-center ">
+				<h1 class="text-[16px] font-bold leading-[175%]">@Kairosigns</h1>
+				<p class="font-heveltica text-[12px] leading-[140%] max-w-[264px] text-center font-normal">We hope you liked the experience with our product. Your feedback means a world to us. Tap on the option that reflects our service quality.</p>
+			</div>
+      <SocialMedia />
+		</div>
+    <div class="w-full flex flex-col justify-center items-center gap-[8px]">
+      {
+        content.map((item) => {
+          const shouldLink = item.stars !== 5;
+          if (shouldLink) {
+            return (
+              <a href="/form" class="w-full">
+                <div class="shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
+                  <div class="flex justify-center items-center gap-1">
+                    {Array.from({ length: item.stars }, (_, index) => (
+                      <Icon name={'start'} class="w-5 h-5 text-yellow-400" />
+                    ))}
+                  </div>
+                  {(item.stars === 5 || item.stars === 1) && (
+                    <p class="font-heveltica text-[14px] font-medium leading-[140%]">{item.title}</p>
+                  )}
+                </div>
+              </a>
+            );
+          } else {
+            return (
+              <div class="shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
+                <div class="flex justify-center items-center gap-1">
+                  {Array.from({ length: item.stars }, (_, index) => (
+                    <Icon name={'start'} class="w-5 h-5 text-yellow-400" />
+                  ))}
+                </div>
+                {(item.stars === 5 || item.stars === 1) && (
+                  <p class="font-heveltica text-[14px] font-medium leading-[140%]">{item.title}</p>
+                )}
+              </div>
+            );
+          }
+        })
+      }
+    </div>
+    </div>
+		<div class="flex  flex-col justify-center items-center gap-[9px] mt-[64px] ">
+			<p class="font-heveltica text-[14px] font-normal leading-[140%]">Powered by</p>
+			<img src="/inkshape.png" alt="Logo de Inkshape" width="117" height="30"/>
+		</div>
+	</section>
+</Layout>
