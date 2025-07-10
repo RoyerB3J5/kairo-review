@@ -48,7 +48,7 @@ const content = [
           if (shouldLink) {
             return (
               <a href="/form" class="w-full">
-                <div class="shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
+                <div class="h-[47px] shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
                   <div class="flex justify-center items-center gap-1">
                     {Array.from({ length: item.stars }, (_, index) => (
                       <Icon name={'start'} class="w-5 h-5 text-yellow-400" />
@@ -62,7 +62,7 @@ const content = [
             );
           } else {
             return (
-              <div class="shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
+              <div class="animate-shake h-[47px] shadow-rate w-full bg-background-prim py-3 px-5 rounded-[10px] text-black flex justify-between items-center">
                 <div class="flex justify-center items-center gap-1">
                   {Array.from({ length: item.stars }, (_, index) => (
                     <Icon name={'start'} class="w-5 h-5 text-yellow-400" />
